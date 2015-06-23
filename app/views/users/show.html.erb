@@ -1,0 +1,12 @@
+<%= link_to "All Users", users_path %>
+|
+<%= link_to "&#10000;".html_safe, edit_user_path(@user) %>
+
+<h1>
+  <%= @user.first_name %>
+  <%= @user.last_name %>
+</h1>
+
+<p>
+  <%= @user.email %>
+</p>

@@ -1,0 +1,14 @@
+<%= link_to "New User", new_user_path %>
+
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+  <p>
+    <h3>
+      <%= link_to user.first_name, user_path(user) %>
+      <%=  user.last_name %>
+      <%= link_to "&#10000;".html_safe, edit_user_path(user) %>
+      <%= link_to "&#10006;".html_safe, user_path(user), method: :delete, data: { confirm: "Are you sure?" } %>
+    </h3>
+  </p>
+<% end %>
