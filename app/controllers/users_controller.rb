@@ -19,10 +19,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "User saved successfully."
+      flash[:success] = "User saved successfully."
       redirect_to users_path
     else
-      flash[:notice] = "User not saved."
+      flash[:danger] = "User not saved."
       render 'new'
     end
   end
@@ -30,10 +30,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "User edited successfully."
+      flash[:success] = "User edited successfully."
       redirect_to @user
     else
-      flash[:notice] = "User not edited."
+      flash[:danger] = "User not edited."
       render 'edit'
     end
   end
@@ -41,10 +41,10 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:notice] = "User deleted successfully."
+      flash[:success] = "User deleted successfully."
       redirect_to users_path
     else
-      flash[:notice] = "User not deleted."
+      flash[:danger] = "User not deleted."
       redirect_to user_path(@user)
     end
   end

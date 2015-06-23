@@ -1,10 +1,8 @@
-<%= link_to "All Users", users_path %>
-|
-<%= link_to "&#10000;".html_safe, edit_user_path(@user) %>
-
 <h1>
   <%= @user.first_name %>
   <%= @user.last_name %>
+  <%= link_to "&#10000;".html_safe, edit_user_path(@user) %>
+  <%= link_to "&#10006;".html_safe, user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
 </h1>
 
 <p>
