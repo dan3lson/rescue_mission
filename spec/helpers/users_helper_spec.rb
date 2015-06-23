@@ -11,5 +11,11 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe UsersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { User.new(first_name: "Jose", last_name: "Cuervo", email: "jose@cuervo.com") }
+
+  describe "#full_name" do
+    it "returns a full name string" do
+      expect(full_name(user.first_name, user.last_name)).to eq("Jose Cuervo")
+    end
+  end
 end

@@ -1,5 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { User.new(first_name: "Jose", last_name: "Cuervo", email: "jose@cuervo.com") }
+
+  describe "#initialization" do
+    it "returns a first_name string" do
+      expect(user.first_name).to eq("Jose")
+    end
+    it "returns a last_name string" do
+      expect(user.last_name).to eq("Cuervo")
+    end
+    it "returns an email string" do
+      expect(user.email).to eq("jose@cuervo.com")
+    end
+  end
 end
