@@ -13,7 +13,10 @@
       </ul>
     </div>
   <% end %>
-
+  <p>
+    <%= f.label :user_id %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :first_name) %>
+  </p>
   <p>
     <%= f.label :title %>
     <%= f.text_field :title %>

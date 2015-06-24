@@ -1,10 +1,25 @@
 <h1>
   <%= @user.first_name %>
   <%= @user.last_name %>
+  <small>
+    <%= @user.email %>
+  </small>
   <%= link_to "&#10000;".html_safe, edit_user_path(@user) %>
   <%= link_to "&#10006;".html_safe, user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
 </h1>
 
 <p class="lead">
-  <%= @user.email %>
+
 </p>
+
+<% @user.questions.each do |question| %>
+  <p>
+    <%= counter + 1 %>.
+    <strong>
+      <%= link_to question.title, question_path(question) %>
+    </strong>
+  </p>
+  <p>
+    <%= question.description %>
+  </p>
+<% end %>

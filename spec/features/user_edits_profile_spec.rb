@@ -13,10 +13,8 @@ feature "user edits profile", %Q{
 
   let(:user) { FactoryGirl.create(:user) }
 
-  pending "provide valid edit information" do
-
-    visit users_path
-    click_on "#{user.first_name} #{user.last_name}"
+  scenario "provide valid edit information" do
+    visit edit_user_path(user)
     fill_in "First Name", with: "Joseee"
     fill_in "Last Name", with: "Cuervooo"
     fill_in "Email", with: "jose@cuervo.com"
@@ -26,9 +24,8 @@ feature "user edits profile", %Q{
     expect(page).to have_content("Joseee Cuervooo")
   end
 
-  pending "provide invalid edit information" do
-    visit users_path
-    click_on "Jose Cuervo"
+  scenario "provide invalid edit information" do
+    visit edit_user_path(user)
     fill_in "First Name", with: ""
     fill_in "Last Name", with: ""
     fill_in "Email", with: ""

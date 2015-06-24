@@ -7,3 +7,27 @@
 <p class="lead">
   <%= @question.description %>
 </p>
+
+<%= form_for @answer do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        Yikes! There are
+        <%= pluralize(@question.errors.count, "error") %>
+        you need to fix:
+      </h2>
+      <ul>
+        <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
