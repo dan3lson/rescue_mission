@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(first_name: "Jose", last_name: "Cuervo", email: "jose@cuervo.com") }
+  let(:user) { FactoryGirl.create(:user) }
 
   describe "#initialization" do
     it "returns a first_name string" do

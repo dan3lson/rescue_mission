@@ -19,10 +19,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "User saved successfully."
+      flash[:success] = "User created successfully."
       redirect_to users_path
     else
-      flash[:danger] = "User not saved."
+      flash.now[:danger] = "User not created successfully."
       render 'new'
     end
   end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       flash[:success] = "User edited successfully."
       redirect_to @user
     else
-      flash[:danger] = "User not edited."
+      flash.now[:danger] = "User not edited successfully."
       render 'edit'
     end
   end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       flash[:success] = "User deleted successfully."
       redirect_to users_path
     else
-      flash[:danger] = "User not deleted."
+      flash.now[:danger] = "User not deleted."
       redirect_to user_path(@user)
     end
   end

@@ -19,7 +19,7 @@ feature "user signs up", %Q{
     fill_in "Email", with: "jose@cuervo.com"
     click_on "Submit"
 
-    #expect(page).to have_content("User created successfully.")
+    expect(page).to have_content("User created successfully.")
     expect(page).to have_content("Jose Cuervo")
   end
 
@@ -28,7 +28,7 @@ feature "user signs up", %Q{
     click_on "Sign Up"
     click_on "Submit"
 
-    #expect(page).to have_content("User not created successfully.")
+    expect(page).to have_content("User not created successfully.")
     expect(page).to have_content("can\'t be blank")
   end
 end
