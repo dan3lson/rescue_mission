@@ -1,14 +1,12 @@
 class AnswersController < ApplicationController
 
   def index
-    @answers = Answer.order("created_at ASC")
-  end
-
-  def show
-    @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers
   end
 
   def new
+    @question = Question.find(params[:question_id])
     @answer = Answer.new
   end
 
@@ -17,24 +15,29 @@ class AnswersController < ApplicationController
   end
 
   def create
+    @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
+    @answer.question = @question
+
     if @answer.save
       flash[:success] = "Answer created successfully."
-      redirect_to answers_path
+      redirect_to question_path(@question)
     else
       flash.now[:danger] = "Answer not created successfully."
-      render 'new'
+      render "questions/show"
     end
   end
 
   def update
+    @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
+
     if @answer.update(answer_params)
       flash[:success] = "Answer edited successfully."
       redirect_to @answer
     else
       flash.now[:danger] = "Answer not edited successfully."
-      render 'edit'
+      render :edit
     end
   end
 
@@ -51,6 +54,6 @@ class AnswersController < ApplicationController
 
   private
     def answer_params
-      params.require(:answer).permit(:description)
+      params.require(:answer).permit(:description, :question_id)
     end
 end

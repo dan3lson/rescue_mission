@@ -1,5 +1,8 @@
 <%= link_to "Back", question_path(@question) %>
 
-<h1>Edit Question</h1>
+<h1>
+  Edit Question
+  <%= link_to "&#10006;".html_safe, question_path(@question), method: :delete, data: { confirm: "Are you sure?" } %>
+</h1>
 
 <%= render "form" %>

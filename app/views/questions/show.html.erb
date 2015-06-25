@@ -1,33 +1,30 @@
-<h1>
-  <%= @question.title %>
-  <%= link_to "&#10000;".html_safe, edit_question_path(@question) %>
-  <%= link_to "&#10006;".html_safe, question_path(@question), method: :delete, data: { confirm: "Are you sure?" } %>
-</h1>
+<div class="row">
+  <div class="col-sm-9">
+    <h1>
+      <%= @question.title %>
+      <%= link_to "&#10000;".html_safe, edit_question_path(@question) %>
+      <%= link_to "&#10006;".html_safe, question_path(@question), method: :delete, data: { confirm: "Are you sure?" } %>
+    </h1>
+    <p class="lead">
+      <%= @question.description %>
+    </p>
+  </div>
+  <div class="col-sm-3 question_show_details_container">
+    <h1 class="">
+      <small>
+        asked <%= time_tag(@question.created_at) %>
+        by <%=
+          link_to full_name(
+            @question.user.first_name,
+            @question.user.last_name[0] << "."), user_path(@question.user
+          )
+        %>
+      </small>
+    </h1>
+  </div>
+</div>
+<hr/>
 
-<p class="lead">
-  <%= @question.description %>
-</p>
+<%= render "questions/answers" %>
 
-<%= form_for @answer do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        Yikes! There are
-        <%= pluralize(@question.errors.count, "error") %>
-        you need to fix:
-      </h2>
-      <ul>
-        <% @question.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit "Submit" %>
-  </p>
-<% end %>
+<%= render "questions/answer_form" %>

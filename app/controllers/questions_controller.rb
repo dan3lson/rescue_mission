@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    #@answer = Answer.new
+    @answer = Answer.new
   end
 
   def new
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
       redirect_to questions_path
     else
       flash.now[:danger] = "Question not created successfully."
-      render 'new'
+      render :new
     end
   end
 
@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
       redirect_to @question
     else
       flash.now[:danger] = "Question not edited successfully."
-      render 'edit'
+      render :edit
     end
   end
 

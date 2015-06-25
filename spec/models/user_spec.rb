@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
 
   describe "associatons" do
     it { should have_many(:questions) }
+    it { should have_many(:answers) }
   end
 
   describe "validations" do

@@ -1,0 +1,12 @@
+<div>
+  <p class="lead">
+    Answers
+  </p>
+  <% @question.answers.each do |answer| %>
+    <ul class="list-group">
+      <l1 class="list-group-item">
+        <%= counter + 1 %>. <%= answer.description %>
+      </l1>
+    </ul>
+  <% end %>
+</div>
