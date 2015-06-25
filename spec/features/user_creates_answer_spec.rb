@@ -10,9 +10,9 @@ feature "user creates an answer", %Q{
   # - I must go to a question show page
   # - I must see a form for creating a new answer
   # - I must see a description required fields
-  scenario "\ncreate a question successfully" do
-    question = FactoryGirl.create(:question)
+  let(:question) { FactoryGirl.create(:question) }
 
+  scenario "\ncreate a question successfully" do
     visit question_path(question)
     fill_in "Description", with: "TequilaTequilaTequilaTequila"
     click_on "Submit"

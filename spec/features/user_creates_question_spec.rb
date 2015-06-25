@@ -10,8 +10,9 @@ feature "user creates a question", %Q{
   # - I must go to the new question page
   # - I must see a form for creating a new question
   # - I must see a user, title, and description required fields
+  let!(:user) { FactoryGirl.create(:user) }
+
   scenario "\ncreate a question successfully" do
-    user = FactoryGirl.create(:user)
     visit new_question_path
     fill_in "Title", with: "TequilaCoco"
     fill_in "Description", with: "TequilaTequilaTequilaTequila"
@@ -22,7 +23,5 @@ feature "user creates a question", %Q{
 
   scenario "create question unsuccessfully" do
     # visit questions_path
-
   end
-
 end
